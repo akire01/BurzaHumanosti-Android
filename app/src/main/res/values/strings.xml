@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BurzaHumanosti</string>
+    <string name="mobile">Mobitel:</string>
+    <string name="password">Lozinka:</string>
+    <string name="sign_in">PRIJAVA</string>
+    <string name="phone_hint">+385*********</string>
+    <string name="password_hint">upišite lozinku</string>
+    <string name="wrongMobile">Pogrešan mobilni broj</string>
+    <string name="mobileLength">Broj mobitela treba imati 13 znakova</string>
+    <string name="wrongMobileStartDigits">Broj mobitela treba započinjati sa +385</string>
+    <string name="mobileStartDigits">+385</string>
+    <string name="txtOK">OK</string>
+    <string name="failedSignIn">Neuspjela prijava</string>
+    <string name="successfulSignIn">Uspješna prijava</string>
+    <string name="insertPhoneAndPass">Morate unijeti svoj broj mobitela i lozinku</string>
+</resources>
