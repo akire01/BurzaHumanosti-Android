@@ -2,7 +2,7 @@
     <string name="app_name">BurzaHumanosti</string>
     <string name="mobile">Mobitel:</string>
     <string name="password">Lozinka:</string>
-    <string name="sign_in">PRIJAVA</string>
+    <string name="sign_in">PRIJAVI SE</string>
     <string name="phone_hint">+385*********</string>
     <string name="password_hint">upišite lozinku</string>
     <string name="wrongMobile">Pogrešan mobilni broj</string>
@@ -10,7 +10,32 @@
     <string name="wrongMobileStartDigits">Broj mobitela treba započinjati sa +385</string>
     <string name="mobileStartDigits">+385</string>
     <string name="txtOK">OK</string>
-    <string name="failedSignIn">Neuspjela prijava</string>
+    <string name="failedSignIn">Pogrešan broj ili lozinka</string>
     <string name="successfulSignIn">Uspješna prijava</string>
     <string name="insertPhoneAndPass">Morate unijeti svoj broj mobitela i lozinku</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action">Akcija</string>
+    <string name="positive">Bijela kronika</string>
+    <string name="terms_of_use_title">Uvjeti korištenja</string>
+    <string name="terms_of_use_message">Morate se složiti s uvjetima korištenja aplikacije</string>
+    <string name="successfully_added_text">Uspješno ste dali svoju ponudu. Hvala!</string>
+    <string name="form">Ispuna forme</string>
+    <string name="fill_all_fields_message">Morate ispuniti sva polja i dodati sliku</string>
+    <string name="terms_of_use_text">Potvrđujem pod kaznenom odgovornošću da neću zloupotrijebiti aplikaciju:</string>
+    <string name="offer_help_text">PONUDI POMOĆ</string>
+    <string name="delivery_type">Način Dostave</string>
+    <string name="condition">Stanje</string>
+    <string name="description">Opis:</string>
+    <string name="name">Naziv:</string>
+    <string name="add_photo">Dodaj sliku</string>
+    <string name="photo">Slika proizvoda/usluge:</string>
+    <string name="subCategory">Potkategorija</string>
+    <string name="category">Kategorija</string>
+
+    <string-array name="categories">
+        <item>Prva</item>
+        <item>Druga</item>
+        <item>Treća</item>
+    </string-array>
 </resources>
