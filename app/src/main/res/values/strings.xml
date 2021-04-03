@@ -21,17 +21,21 @@
     <string name="terms_of_use_message">Morate se složiti s uvjetima korištenja aplikacije</string>
     <string name="successfully_added_text">Uspješno ste dali svoju ponudu. Hvala!</string>
     <string name="form">Ispuna forme</string>
-    <string name="fill_all_fields_message">Morate ispuniti sva polja i dodati sliku</string>
+    <string name="fill_all_fields_message_and_photo">Morate ispuniti sva polja i dodati sliku</string>
+    <string name="fill_all_fields_message">Morate ispuniti sva polja</string>
     <string name="terms_of_use_text">Potvrđujem pod kaznenom odgovornošću da neću zloupotrijebiti aplikaciju:</string>
     <string name="offer_help_text">PONUDI POMOĆ</string>
     <string name="delivery_type">Način Dostave</string>
-    <string name="condition">Stanje</string>
-    <string name="description">Opis:</string>
-    <string name="name">Naziv:</string>
+    <string name="condition">Stanje </string>
+    <string name="description">Opis proizvoda/usluge:</string>
+    <string name="name">Naziv proizvoda/usluge:</string>
     <string name="add_photo">Dodaj sliku</string>
     <string name="photo">Slika proizvoda/usluge:</string>
     <string name="subCategory">Potkategorija</string>
     <string name="category">Kategorija</string>
+    <string name="btn_want_help">ZATRAŽI POMOĆ</string>
+    <string name="demand_request">Predaja zahtjeva</string>
+    <string name="demand_request_success">Uspješno ste predali zahtjev za pomoću</string>
 
     <string-array name="categories">
         <item>Prva</item>

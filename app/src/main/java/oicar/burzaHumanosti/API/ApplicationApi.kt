@@ -1,9 +1,7 @@
 package oicar.burzaHumanosti.API
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import androidx.core.content.ContentProviderCompat.requireContext
 import oicar.burzaHumanosti.BurzaHumanostiApp
 import oicar.burzaHumanosti.model.*
 import okhttp3.*
@@ -16,25 +14,30 @@ import retrofit2.http.*
 
 interface ApplicationApi {
     @POST("account/login")
-    fun signIn(@Body credentials: SignInCredentials) : Call<LoginResponse>
+    fun signIn(@Body credentials: SignInCredentials): Call<LoginResponse>
 
     @GET("category")
-    fun getCategories() : Call<List<Category>>
+    fun getCategories(): Call<List<Category>>
 
     @GET("condition")
-    fun getConditions() : Call<List<Condition>>
+    fun getConditions(): Call<List<Condition>>
 
     @GET("delivery/type")
-    fun getDeliveryTypes() : Call<List<DeliveryType>>
+    fun getDeliveryTypes(): Call<List<DeliveryType>>
 
     @Multipart
     @POST("article")
-    fun postArticle(@Part imageFile: MultipartBody.Part,
-                    @Part("name") name: RequestBody,
-                    @Part("description") description: RequestBody,
-                    @Part("subCategoryId") subCategoryId: RequestBody,
-                    @Part("articleConditionId") articleConditionId: RequestBody,
-                    @Part("deliveryTypeId") deliveryTypeId: RequestBody) : Call<Article>
+    fun postArticle(
+        @Part imageFile: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("subCategoryId") subCategoryId: RequestBody,
+        @Part("articleConditionId") articleConditionId: RequestBody,
+        @Part("deliveryTypeId") deliveryTypeId: RequestBody
+    ): Call<Article>
+
+    @POST("demand")
+    fun postDemand(@Body demand: Demand): Call<Demand>
 }
 
 class RetrofitInstance {

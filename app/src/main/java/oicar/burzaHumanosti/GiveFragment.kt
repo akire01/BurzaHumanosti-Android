@@ -181,7 +181,7 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
             requireActivity().runOnUiThread {
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle(getString(R.string.form))
-                    .setMessage(getString(R.string.fill_all_fields_message))
+                    .setMessage(getString(R.string.fill_all_fields_message_and_photo))
                     .setPositiveButton(getString(R.string.txtOK)) { _, _ -> }
                     .show()
             }
@@ -202,6 +202,8 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
         super.onResume()
 
         getCategories()
+        getConditions()
+        getDeliveryTypes()
 
         binding.autoCompleteTvCategory.onItemClickListener =
             OnItemClickListener { adapterView, view, position, id ->
@@ -235,8 +237,6 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
                 selectedDeliveryTypeId = selectedDeliveryType.id
             }
 
-        getConditions()
-        getDeliveryTypes()
     }
 
     private fun getDeliveryTypes() {
