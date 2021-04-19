@@ -13,6 +13,7 @@
         android:padding="20dp"
         tools:context=".GiveFragment">
 
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
@@ -59,20 +60,14 @@
             app:drawableLeftCompat="@drawable/ic_add_photo" />
 
         <ImageView
-            android:id="@+id/photo"
+            android:id="@+id/iv_add_photo"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_insert_photo" />
-
-        <Button
-            android:id="@+id/btn_add_photo"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:text="@string/add_photo" />
+            android:src="@drawable/ic_add_photo" />
 
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/name"
@@ -112,7 +107,7 @@
             app:startIconDrawable="@drawable/ic_verified">
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTvSubCondition"
+                android:id="@+id/autoCompleteTvCondition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -131,7 +126,7 @@
             app:startIconDrawable="@drawable/ic_delivery">
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTvSubDelivery"
+                android:id="@+id/autoCompleteTvDelivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -159,7 +154,19 @@
                 android:buttonTint="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+
+            <ProgressBar
+                android:visibility="invisible"
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                 />
+
         </LinearLayout>
+
 
         <Button
             android:id="@+id/btn_add_article"

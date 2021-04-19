@@ -78,6 +78,11 @@ class WantFragment : Fragment(R.layout.fragment_want) {
                         .setMessage(getString(R.string.demand_request_success))
                         .setPositiveButton(getString(R.string.txtOK)) { _, _ -> }
                         .show()
+
+                    binding.autoCompleteTvCategory.setText("",false)
+                    binding.autoCompleteTvSubCategory.setText("",false)
+                    binding.etDescription.text.clear()
+                    binding.cbAgree.isChecked = false
                 }
 
                 override fun onFailure(call: Call<Demand>, t: Throwable) {

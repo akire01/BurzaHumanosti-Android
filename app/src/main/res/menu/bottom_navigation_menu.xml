@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/positiveFragment"
+        android:title="@string/positive"
+        android:icon="@drawable/ic_story"
+        />
+    <item
+        android:id="@+id/historyFragment"
+        android:title="@string/my_history"
+        android:icon="@drawable/ic_history"
+        />
+    <item
         android:id="@+id/homeFragment"
-        android:title="Home"
+        android:title="@string/my_home"
         android:icon="@drawable/ic_home"
         />
     <item
         android:id="@+id/actionFragment"
         android:title="@string/action"
-        android:icon="@drawable/ic_accessibility"
+        android:icon="@drawable/ic_volunteer_activism"
         />
     <item
-        android:id="@+id/positiveFragment"
-        android:title="@string/positive"
-        android:icon="@drawable/ic__mood"
+        android:id="@+id/heroesFragment"
+        android:title="@string/heroes"
+        android:icon="@drawable/ic_grade"
         />
 </menu>

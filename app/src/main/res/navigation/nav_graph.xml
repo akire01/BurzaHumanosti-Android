@@ -8,22 +8,56 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="oicar.burzaHumanosti.LoginFragment"
-        android:label="fragment_login"
+        android:label="Prijava"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="oicar.burzaHumanosti.HomeFragment"
-        android:label="fragment_home"
+        android:label="Aktualne ponude i potražnje"
         tools:layout="@layout/fragment_home" />
     <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment"/>
     <fragment
         android:id="@+id/actionFragment"
         android:name="oicar.burzaHumanosti.ActionFragment"
-        android:label="fragment_action"
+        android:label="Nova ponuda/potražnja"
         tools:layout="@layout/fragment_action" />
     <fragment
         android:id="@+id/positiveFragment"
         android:name="oicar.burzaHumanosti.PositiveFragment"
-        android:label="fragment_positive"
+        android:label="Moje Pozitivne Priče"
         tools:layout="@layout/fragment_positive" /><action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment"/>
+    <fragment
+        android:id="@+id/offerDetailFragment"
+        android:name="oicar.burzaHumanosti.OfferDetailFragment"
+        android:label="Detalji ponude"
+        tools:layout="@layout/fragment_offer_detail" >
+        <argument
+            android:name="offer"
+            app:argType="oicar.burzaHumanosti.model.Offer"
+            app:nullable="true" />
+    </fragment><action android:id="@+id/action_global_offerDetailFragment" app:destination="@id/offerDetailFragment"/>
+    <fragment
+        android:id="@+id/myOffersFragment"
+        android:name="oicar.burzaHumanosti.MyOffersFragment"
+        android:label="MyOffersFragment" />
+    <fragment
+        android:id="@+id/myDemandsFragment"
+        android:name="oicar.burzaHumanosti.MyDemandsFragment"
+        android:label="fragment_my_demands"
+        tools:layout="@layout/fragment_my_demands" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="oicar.burzaHumanosti.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" /><action android:id="@+id/action_global_aboutAppFragment" app:destination="@id/aboutAppFragment"/>
+    <fragment
+        android:id="@+id/heroesFragment"
+        android:name="oicar.burzaHumanosti.HeroesFragment"
+        android:label="Heroji"
+        tools:layout="@layout/fragment_heroes" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="oicar.burzaHumanosti.HistoryFragment"
+        android:label="Pronađene ponude i potražnje"
+        tools:layout="@layout/fragment_history" />
 </navigation>

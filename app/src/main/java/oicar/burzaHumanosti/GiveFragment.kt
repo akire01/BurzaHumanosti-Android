@@ -11,11 +11,8 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.CheckBox
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +21,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import id.zelory.compressor.Compressor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import oicar.burzaHumanosti.API.RetrofitInstance
 import oicar.burzaHumanosti.databinding.FragmentGiveBinding
 import oicar.burzaHumanosti.model.*
@@ -66,7 +64,7 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
     ): View? {
         binding = FragmentGiveBinding.inflate(inflater, container, false)
 
-        binding.btnAddPhoto.setOnClickListener {
+        binding.ivAddPhoto.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
         }
@@ -102,7 +100,6 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
         val description = binding.etDescription.text.toString()
         val checkBox : CheckBox = binding.cbAgree
         val textAgree : TextView = binding.tvAgree
-
         val result = validateFields(
             name,
             description,
@@ -142,10 +139,6 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
             selectedDeliveryTypeId.toString()
         )
 
-        if (imageUri == null) {
-            return
-        }
-
         val file = File(imageUri!!.getRealPath(requireContext())!!)
         val compressedImageFile = Compressor.compress(requireContext(), file)
         val requestFile = RequestBody.create(
@@ -154,16 +147,43 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
         )
         val imageBody = MultipartBody.Part.createFormData("image", file.name, requestFile)
 
+        withContext(Dispatchers.Main) {
+            binding.progressBar.visibility=View.VISIBLE
+            binding.btnAddArticle.visibility = View.GONE
+        }
+
         RetrofitInstance.getRetrofitInstance().postArticle(
             imageBody, nameBody, descriptionBody,
             subCategoryIdBody, conditionIdBody, deliveryTypeBody
         ).enqueue(object : Callback<Article> {
+
             override fun onResponse(call: Call<Article>, response: Response<Article>) {
                 println(response.body())
-                Toast.makeText(context, getString(R.string.successfully_added_text), Toast.LENGTH_SHORT).show()
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(getString(R.string.give_success))
+                    .setMessage(getString(R.string.successfully_added_text))
+                    .setPositiveButton(getString(R.string.txtOK)) { _, _ -> }
+                    .show()
+
+                imageUri = null
+                binding.ivAddPhoto.setImageResource(R.drawable.ic_add_photo)
+                binding.autoCompleteTvCategory.setText("",false)
+                binding.autoCompleteTvSubCategory.setText("", false)
+                binding.autoCompleteTvCondition.setText("", false)
+                binding.autoCompleteTvDelivery.setText("", false)
+                binding.etName.text.clear()
+                binding.etDescription.text.clear()
+                binding.cbAgree.isChecked = false
+
+                binding.progressBar.visibility=View.GONE
+                binding.btnAddArticle.visibility = View.VISIBLE
+
             }
 
             override fun onFailure(call: Call<Article>, t: Throwable) {
+
+                binding.progressBar.visibility=View.GONE
+                binding.btnAddArticle.visibility = View.VISIBLE
                 println(t.message)
             }
 
@@ -172,7 +192,8 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
 
     private fun validateFields(
         name: Any, description: Any, selectedSubCategoryId: Int?,
-        selectedConditionId: Int?, selectedDeliveryTypeId: Int?, imageUri: Uri?
+        selectedConditionId: Int?, selectedDeliveryTypeId: Int?,
+        imageUri: Uri?
     ): Boolean {
         if (name.toString().trim().isEmpty() || description.toString().trim().isEmpty()
             || selectedConditionId == null || selectedSubCategoryId == null
@@ -194,7 +215,7 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
-            binding.photo.setImageURI(imageUri)
+            binding.ivAddPhoto.setImageURI(imageUri)
         }
     }
 
@@ -221,18 +242,18 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
                 selectedSubCategoryId = selectedSubCategory.id
             }
 
-        binding.autoCompleteTvSubCondition.onItemClickListener =
+        binding.autoCompleteTvCondition.onItemClickListener =
             OnItemClickListener { adapterView, view, position, id ->
                 val selectedValue: String =
-                    binding.autoCompleteTvSubCondition.adapter!!.getItem(position) as String
+                    binding.autoCompleteTvCondition.adapter!!.getItem(position) as String
                 val selectedCondition = allConditions.first { it.name == selectedValue }
                 selectedConditionId = selectedCondition.id
             }
 
-        binding.autoCompleteTvSubDelivery.onItemClickListener =
+        binding.autoCompleteTvDelivery.onItemClickListener =
             OnItemClickListener { adapterView, view, position, id ->
                 val selectedValue: String =
-                    binding.autoCompleteTvSubDelivery.adapter!!.getItem(position) as String
+                    binding.autoCompleteTvDelivery.adapter!!.getItem(position) as String
                 val selectedDeliveryType = allDeliveryTypes.first { it.name == selectedValue }
                 selectedDeliveryTypeId = selectedDeliveryType.id
             }
@@ -260,7 +281,7 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
                             R.layout.dropdown_item,
                             deliveryTypesNames
                         )
-                        binding.autoCompleteTvSubDelivery.setAdapter(arrayAdapter)
+                        binding.autoCompleteTvDelivery.setAdapter(arrayAdapter)
                     }
                 }
 
@@ -282,6 +303,7 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
                 for (it in item.subCategories) {
                     subCategoryNames.add(it.name)
                 }
+
                 val arrayAdapter = ArrayAdapter(
                     requireContext(),
                     R.layout.dropdown_item,
@@ -306,13 +328,15 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
                     allCategories = categories
                     for (item in categories) {
                         categoryNames.add(item.name)
-                        val arrayAdapter = ArrayAdapter(
-                            requireContext(),
-                            R.layout.dropdown_item,
-                            categoryNames
-                        )
-                        binding.autoCompleteTvCategory.setAdapter(arrayAdapter)
                     }
+
+                    val arrayAdapter = ArrayAdapter(
+                        requireContext(),
+                        R.layout.dropdown_item,
+                        categoryNames
+                    )
+
+                    binding.autoCompleteTvCategory.setAdapter(arrayAdapter)
                 }
             }
 
@@ -342,7 +366,7 @@ class GiveFragment : Fragment(R.layout.fragment_give) {
                             R.layout.dropdown_item,
                             conditionNames
                         )
-                        binding.autoCompleteTvSubCondition.setAdapter(arrayAdapter)
+                        binding.autoCompleteTvCondition.setAdapter(arrayAdapter)
                     }
                 }
             }

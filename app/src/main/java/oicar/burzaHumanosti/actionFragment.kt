@@ -2,11 +2,9 @@ package oicar.burzaHumanosti
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
-import oicar.burzaHumanosti.adapters.ActionViewPagerAdapter
+import oicar.burzaHumanosti.adapters.ViewPagerAdapter
 import oicar.burzaHumanosti.databinding.FragmentActionBinding
 
 
@@ -18,14 +16,13 @@ class ActionFragment : Fragment(R.layout.fragment_action) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentActionBinding.bind(view)
-        (requireActivity() as MainActivity).supportActionBar?.title = "Burza Humanosti"
 
-        val fragmentList = arrayListOf<Fragment>(
+        val fragmentList = mutableListOf(
             GiveFragment(),
             WantFragment()
         )
 
-        val adapter = ActionViewPagerAdapter(
+        val adapter = ViewPagerAdapter(
             fragmentList,
             requireActivity().supportFragmentManager,
             lifecycle)
@@ -35,9 +32,9 @@ class ActionFragment : Fragment(R.layout.fragment_action) {
         TabLayoutMediator(binding.tabLayout, binding.actionViewPager){
             tab, position ->
             when(position){
-                0->tab.text = "Nudim Pomoć"
-                1->tab.text = "Tražim pomoć"
-                else -> tab.text = "Akcija"
+                0->tab.text = getString(R.string.giving_help)
+                1->tab.text = getString(R.string.searching_for_a_help)
+                else -> tab.text = getString(R.string.action)
             }
         }.attach()
     }

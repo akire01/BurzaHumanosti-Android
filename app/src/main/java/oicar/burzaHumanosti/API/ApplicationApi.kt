@@ -16,6 +16,9 @@ interface ApplicationApi {
     @POST("account/login")
     fun signIn(@Body credentials: SignInCredentials): Call<LoginResponse>
 
+    @GET("account/login/application")
+    fun confirmLogin() : Call<ConfirmLoginResponse>
+
     @GET("category")
     fun getCategories(): Call<List<Category>>
 
@@ -38,6 +41,37 @@ interface ApplicationApi {
 
     @POST("demand")
     fun postDemand(@Body demand: Demand): Call<Demand>
+
+    @GET("article/account")
+    fun getArticles(): Call<List<Offer>>
+
+    @GET("demand/account")
+    fun getMyDemands(): Call<List<MyDemand>>
+
+    @PUT("article/{id}")
+    fun updateArticle(@Path("id") id: Int, @Body article: UpdateArticle): Call<Article>
+
+    @DELETE("article/{id}")
+    fun deleteArticle(@Path("id") id: Int) : Call<DeletionResponse>
+
+    @DELETE("demand/{id}")
+    fun deleteDemand(@Path("id") id: Int) : Call<DeletionResponse>
+
+    @GET("offer/account")
+    fun getAllMatches() : Call<Help>
+
+    @GET("offer/{id}")
+    fun getStory(@Path("id") id: Int): Call<StoryResponse>
+
+    @GET("https://api.bh-app.xyz/offer/account/helped")
+    fun getGiven() : Call<List<HelpResponse>>
+
+    @GET("https://api.bh-app.xyz/offer/account/received")
+    fun getReceived() : Call<List<HelpResponse>>
+
+    @GET("https://api.bh-app.xyz/account/heroes")
+    fun getHeroes() : Call<List<Hero>>
+
 }
 
 class RetrofitInstance {

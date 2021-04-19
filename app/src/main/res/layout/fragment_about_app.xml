@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplikacija Burza Humanosti je humanitarnog karaktera.\n\nOna nastoji povezati ljude i organizacije koji mogu i žele pomći s ljudima i obiteljima kojima je pomoć potrebna.\n\nGlavni cilj aplikacije je pomoći egzistencijalno ugroženim i siromašnijim građanima Republike Hrvatske.\n\nPomoć se razvrstava po kategorijama i potkategorijama, a poseban algoritam će obavijestiti korisnika o novoj pomoći unutar aplikacije koja odgovara njegovim potrebama.\n\nSvatko od nas je komadić slagalice, ali samo svi zajedno tvorimo smislenu cjelinu, zato pomozimo jedni drugima i promijenimo svijet na bolje!"
+        />
+
+
+</LinearLayout>

@@ -11,12 +11,11 @@
     <string name="mobileStartDigits">+385</string>
     <string name="txtOK">OK</string>
     <string name="failedSignIn">Pogrešan broj ili lozinka</string>
-    <string name="successfulSignIn">Uspješna prijava</string>
+    <string name="successfulSignIn">Prijavljeni ste</string>
     <string name="insertPhoneAndPass">Morate unijeti svoj broj mobitela i lozinku</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action">Akcija</string>
-    <string name="positive">Bijela kronika</string>
+    <string name="positive">Priče</string>
     <string name="terms_of_use_title">Uvjeti korištenja</string>
     <string name="terms_of_use_message">Morate se složiti s uvjetima korištenja aplikacije</string>
     <string name="successfully_added_text">Uspješno ste dali svoju ponudu. Hvala!</string>
@@ -36,10 +35,24 @@
     <string name="btn_want_help">ZATRAŽI POMOĆ</string>
     <string name="demand_request">Predaja zahtjeva</string>
     <string name="demand_request_success">Uspješno ste predali zahtjev za pomoću</string>
-
-    <string-array name="categories">
-        <item>Prva</item>
-        <item>Druga</item>
-        <item>Treća</item>
-    </string-array>
+    <string name="empty_credentials">Neuspjela prijava</string>
+    <string name="give_success">Uspješna ponuda</string>
+    <string name="heroes">Heroji</string>
+    <string name="about_app">O Aplikaciji</string>
+    <string name="my_history">Pronađeno</string>
+    <string name="my_home">Moje</string>
+    <string name="giving_help">Nudim Pomoć</string>
+    <string name="searching_for_a_help">Tražim pomoć</string>
+    <string name="given">Poklonjeno</string>
+    <string name="receviced">Primljeno</string>
+    <string name="my_offers">Moje Ponude</string>
+    <string name="my_searchings">Moje Potražnje</string>
+    <string name="home">Home</string>
+    <string name="deleting">Brisanje</string>
+    <string name="sure_to_delete">Jeste li sigurni da želite poništiti?</string>
+    <string name="success_deleted">Uspješno ste poništili</string>
+    <string name="yes">DA</string>
+    <string name="no">NE</string>
+    <string name="success">Uspjeh</string>
+    <string name="success_updated">Izmijenili ste svoju ponudu</string>
 </resources>
